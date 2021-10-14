@@ -1,0 +1,41 @@
+Seller Central:  https://sellercentral.amazon.fr/
+- SSO: same email and password
+- authorize dev
+  - create product on amazon
+  - fba vs fbm
+  - replenish (fba)
+  - create listing (candles ftw)
+
+Amazon Connector:
+- an seller account registered in a given region (Europe, NA, Asia, ...)
+- authorize Odoo to access your sales data as a develope through the authorization token
+- create the Amazon Account record in Odoo.
+- sign up marketplace
+- active marketplaces
+- duplicate accounts for per-marketplace config
+- debug: products, marketplaces
+- configure SKUs on products
+- also for shipping and gift wraps
+- override SKUs on offers
+- configure taxes on products -> explain
+- unsupported marketplaces
+- cron to sync orders
+- stock update (fba vs fbm)
+- confirm picking (fbm) -> cron to notify pickings
+- cancel order -> cron to notify cancelations
+
+Debug/Support:
+- never ever cancel just to delete in 13.0
+- neuter crons
+- change last update date
+
+Technical:
+- proxy (comme IAP - seller ID - authorization token) -> ajoute son API à la connexion avec amazon.
+- 4 modules (V13):
+    - sale_amazon
+    - sale_amazon _authentication
+    - sale_amazon_taxcloud -> On laisse Taxcloud dominer
+    - sale_amazon_delivery (plus en V15) -> Amazon a rendu ça obligatoire (avant on pouvait passer par bpost ou autre) -> si pas de carrier ID ou tracking ID, on ne peut pas confirmer auprès d'Amazon.
+- SP-API -> Nouvelle API pour remplacer la MWS.
+
+Odoo Documentation https://www.odoo.com/documentation/master/applications/sales/sales/amazon_connector/features.html
